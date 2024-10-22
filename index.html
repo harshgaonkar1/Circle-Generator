@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .circle{
+            display: flex;
+            width: 100px;
+            height: 100px;
+            /* background-color: aqua; */
+            border-radius: 50%;
+            border: 1px solid black;
+            position: absolute;
+            justify-content: center;
+            align-items: center;
+            color: balck;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    let count = 0
+    function randomcolour(){
+        // const circlecolour = '0123456789ABCDEF'
+        // let colour = '#'
+        // for(let i = 0; i<6;i++){
+        //     colour += circlecolour[Math.floor(Math.random() *16)]
+        // }
+        // return colour
+        const r = Math.floor(Math.random()*156 +100)
+        const g = Math.floor(Math.random()*156 +100)
+        const b = Math.floor(Math.random()*156 +100)
+        return `rgb(${r}, ${g}, ${b}, 0.5)`
+    }
+
+    const getColour = () => {
+
+    }
+    document.addEventListener('click',function(event){
+        const circle = document.createElement('div')
+        const number = document.createElement('p')
+        number.textContent = count
+        circle.style.display = 'flex'
+        circle.style.justifyContent = 'center'
+        circle.style.alignItems = 'center'
+        number.style.zIndex = 999
+        circle.className = 'circle'
+        circle.style.left = `${event.clientX - 57}px`
+        circle.style.top = `${event.clientY - 57}px`
+        // circle.style.opacity = "0.5"
+        circle.style.border = "2px solid black"
+        circle.style.zIndex = count
+        circle.style.backgroundColor = randomcolour()
+        circle.appendChild(number)
+        document.body.appendChild(circle)
+        // circle.textContent = count
+        count++
+    })
+</script>
+</html>
